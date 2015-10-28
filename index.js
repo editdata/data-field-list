@@ -10,10 +10,10 @@ Create a virtual-dom list (object or array) data-field for use with [data-ui](ht
 @param {Object} properties an options object, including any properties you can pass to virtual-dom/h
 @param {Boolean} properties.display true for display mode, default is false for input mode
 @param {Boolean} properties.keys, false for array mode, default is true for object mode
-@param {Object} properties.value a geojson Feature or Featurecollection
-@param {Array} properties.value a geojson Feature or Featurecollection
-@param {Object} value a geojson Feature or Featurecollection
-@param {Array} value a geojson Feature or Featurecollection
+@param {Object} properties.value an array or flat object
+@param {Array} properties.value an array or flat object
+@param {Object} value an array or flat object
+@param {Array} value an array or flat object
 @returns virtual-dom tree
 @name createListField
 @example
@@ -21,7 +21,7 @@ var createListField = require('data-field-string')
 
 createListField(h, { onclick: function (e){} }, ['example', 'string'])
 */
-module.exports = function createListField (h, properties, items) {
+module.exports = function createListField (h, properties, value) {
   properties = extend({
     tagName: 'div',
     display: false,
@@ -31,25 +31,26 @@ module.exports = function createListField (h, properties, items) {
   }, properties)
 
   properties.dataType = 'list'
-  items = items || properties.items
+  value = value || properties.value
   var keys = properties.keys
 
-  if (isarray(items)) {
-    items = convert.toObject(items)
+  if (isarray(value)) {
+    value = convert.toObject(items)
   }
 
+  var items = []
   if (properties.display) {
     properties.tagName = 'ul'
     properties.fieldType = 'display'
-    items = Object.keys(items).map(function (key) {
-      var item = items[key]
+    items = Object.keys(value).map(function (key) {
+      var item = value[key]
       var el = []
       if (keys) el.push(h('span.data-field-list-key', key + ': '))
       el.push(h('span.data-field-list-value', item))
       return h('li.data-field-list-item', el)
     })
   } else {
-    items = [listEditor({ items: items, keys: keys }, properties)]
+    items = [listEditor({ items: value, keys: keys }, properties)]
   }
 
   properties.className = createClassName(properties)

@@ -16,15 +16,13 @@ Create a virtual-dom list (object or array) data-field for use with [data-ui](ht
 
     -   `properties.keys` **Boolean** , false for array mode, default is true for object mode
 
-    -   `properties.value` **Object** a geojson Feature or Featurecollection
+    -   `properties.value` **Object** an array or flat object
 
-    -   `properties.value` **Array** a geojson Feature or Featurecollection
+    -   `properties.value` **Array** an array or flat object
 
--   `value` **Object** a geojson Feature or Featurecollection
+-   `value` **Object** an array or flat object
 
--   `value` **Array** a geojson Feature or Featurecollection
-
--   `items`  
+-   `value` **Array** an array or flat object
 
 
 
