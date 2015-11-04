@@ -9,6 +9,31 @@ Create a virtual-dom list (object or array) data-field for use with [data-ui](ht
 
 **Parameters**
 
+-   `options` **Object** an options object, including any properties you can pass to virtual-dom/h
+    -   `options.display` **Boolean** true for display mode, default is false for input mode
+
+    -   `options.keys` **Boolean** , false for array mode, default is true for object mode
+
+
+
+**Examples**
+
+```javascript
+var createListField = require('data-field-string')
+var field = createListField()
+var tree = field.render(h, properties, ['a', 'b', 'c'])
+```
+
+
+
+
+### createListField
+
+Create a virtual-dom list (object or array) data-field for use with [data-ui](https://github.com/editdata/data-ui).
+
+
+**Parameters**
+
 -   `h` **function** virtual-dom `h` function
 
 -   `properties` **Object** an options object, including any properties you can pass to virtual-dom/h
@@ -30,11 +55,27 @@ Create a virtual-dom list (object or array) data-field for use with [data-ui](ht
 
 ```javascript
 var createListField = require('data-field-string')
-
-createListField(h, { onclick: function (e){} }, ['example', 'string'])
+var field = createListField()
+var tree = field.render(h, properties, ['a', 'b', 'c'])
 ```
 
+## Installation
 
+```sh
+npm install data-field-list --save
+```
+
+Or install the [data-fields](https://github.com/editdata/data-fields) module:
+```sh
+npm install data-fields --save
+```
+
+## Tests
+
+```sh
+npm install
+npm test
+```
 
 
 ## See also

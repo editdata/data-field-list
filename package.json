@@ -1,11 +1,12 @@
 {
   "name": "data-field-list",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "author": "sethvincent",
   "bugs": {
     "url": "https://github.com/editdata/data-field-list/issues"
   },
   "dependencies": {
+    "component-emitter": "^1.2.0",
     "data-field-classname": "^1.0.0",
     "isarray": "0.0.1",
     "list-editor": "^1.0.1",
